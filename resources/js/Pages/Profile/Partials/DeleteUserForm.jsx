@@ -74,7 +74,7 @@ export default function DeleteUserForm({ className = '' }) {
                             ref={passwordInput}
                             value={data.password}
                             onChange={(e) => setData('password', e.target.value)}
-                            className="input-style w-full px-3.5 py-2.5 rounded-xl border text-sm"
+                            className={`input-style w-full px-3.5 py-2.5 rounded-xl border text-sm ${errors.password ? '!border-red-500 focus:!border-red-500' : ''}`}
                             placeholder="Enter your password to confirm"
                         />
                         <InputError message={errors.password} className="mt-2" />

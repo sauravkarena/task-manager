@@ -25,7 +25,7 @@ export default function UpdateProfileInformation({
                 <label htmlFor="name" className="block text-xs font-semibold text-secondary uppercase tracking-wide mb-2">Name</label>
                 <input
                     id="name"
-                    className="input-style w-full px-3.5 py-2.5 rounded-xl border text-sm"
+                    className={`input-style w-full px-3.5 py-2.5 rounded-xl border text-sm ${errors.name ? '!border-red-500 focus:!border-red-500' : ''}`}
                     value={data.name}
                     onChange={(e) => setData('name', e.target.value)}
                     required
@@ -39,7 +39,7 @@ export default function UpdateProfileInformation({
                 <input
                     id="email"
                     type="email"
-                    className="input-style w-full px-3.5 py-2.5 rounded-xl border text-sm"
+                    className={`input-style w-full px-3.5 py-2.5 rounded-xl border text-sm ${errors.email ? '!border-red-500 focus:!border-red-500' : ''}`}
                     value={data.email}
                     onChange={(e) => setData('email', e.target.value)}
                     required

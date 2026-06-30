@@ -36,7 +36,7 @@ export default function Register() {
                             id="name"
                             name="name"
                             value={data.name}
-                            className="input-style w-full pl-10 pr-4 py-2.5 rounded-xl border text-sm"
+                            className={`input-style w-full pl-10 pr-4 py-2.5 rounded-xl border text-sm ${errors.name ? '!border-red-500 focus:!border-red-500' : ''}`}
                             autoComplete="name"
                             autoFocus
                             placeholder="John Doe"
@@ -56,7 +56,7 @@ export default function Register() {
                             type="email"
                             name="email"
                             value={data.email}
-                            className="input-style w-full pl-10 pr-4 py-2.5 rounded-xl border text-sm"
+                            className={`input-style w-full pl-10 pr-4 py-2.5 rounded-xl border text-sm ${errors.email ? '!border-red-500 focus:!border-red-500' : ''}`}
                             autoComplete="username"
                             placeholder="you@example.com"
                             onChange={(e) => setData('email', e.target.value)}
@@ -75,7 +75,7 @@ export default function Register() {
                             type="password"
                             name="password"
                             value={data.password}
-                            className="input-style w-full pl-10 pr-4 py-2.5 rounded-xl border text-sm"
+                            className={`input-style w-full pl-10 pr-4 py-2.5 rounded-xl border text-sm ${errors.password ? '!border-red-500 focus:!border-red-500' : ''}`}
                             autoComplete="new-password"
                             placeholder="••••••••"
                             onChange={(e) => setData('password', e.target.value)}
@@ -94,7 +94,7 @@ export default function Register() {
                             type="password"
                             name="password_confirmation"
                             value={data.password_confirmation}
-                            className="input-style w-full pl-10 pr-4 py-2.5 rounded-xl border text-sm"
+                            className={`input-style w-full pl-10 pr-4 py-2.5 rounded-xl border text-sm ${errors.password_confirmation ? '!border-red-500 focus:!border-red-500' : ''}`}
                             autoComplete="new-password"
                             placeholder="••••••••"
                             onChange={(e) => setData('password_confirmation', e.target.value)}

@@ -42,7 +42,7 @@ export default function Login({ status, canResetPassword }) {
                             type="email"
                             name="email"
                             value={data.email}
-                            className="input-style w-full pl-10 pr-4 py-2.5 rounded-xl border text-sm"
+                            className={`input-style w-full pl-10 pr-4 py-2.5 rounded-xl border text-sm ${errors.email ? '!border-red-500 focus:!border-red-500' : ''}`}
                             autoComplete="username"
                             autoFocus
                             placeholder="you@example.com"
@@ -61,7 +61,7 @@ export default function Login({ status, canResetPassword }) {
                             type="password"
                             name="password"
                             value={data.password}
-                            className="input-style w-full pl-10 pr-4 py-2.5 rounded-xl border text-sm"
+                            className={`input-style w-full pl-10 pr-4 py-2.5 rounded-xl border text-sm ${errors.password ? '!border-red-500 focus:!border-red-500' : ''}`}
                             autoComplete="current-password"
                             placeholder="••••••••"
                             onChange={(e) => setData('password', e.target.value)}

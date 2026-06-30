@@ -3,6 +3,7 @@ import { Head, useForm, Link, router } from '@inertiajs/react';
 import { useState, useEffect, useCallback, useMemo, memo } from 'react';
 import { Plus, Trash2, GripVertical } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import InputError from '@/Components/InputError';
 
 const COLUMNS = ['To Do', 'In Progress', 'Done'];
 const PRIORITIES = { 
@@ -197,8 +198,8 @@ export default function Show({ project }) {
                         <form onSubmit={submitTask} className="grid gap-5 md:grid-cols-2">
                             <div className="col-span-2 md:col-span-1">
                                 <label className="block text-xs font-semibold text-secondary uppercase tracking-wide mb-2">Title</label>
-                                <input type="text" placeholder="e.g. Design homepage" value={data.title} onChange={e => setData('title', e.target.value)} className="input-style w-full px-3.5 py-2.5 rounded-xl border text-sm transition-all" />
-                                {errors.title && <div className="text-red-600 text-sm mt-1">{errors.title}</div>}
+                                <input type="text" placeholder="e.g. Design homepage" value={data.title} onChange={e => setData('title', e.target.value)} className={`input-style w-full px-3.5 py-2.5 rounded-xl border text-sm transition-all ${errors.title ? '!border-red-500 focus:!border-red-500' : ''}`} />
+                                <InputError message={errors.title} className="mt-1" />
                             </div>
                             <div className="col-span-2 md:col-span-1">
                                 <label className="block text-xs font-semibold text-secondary uppercase tracking-wide mb-2">Priority</label>
