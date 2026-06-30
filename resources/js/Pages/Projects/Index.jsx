@@ -1,7 +1,6 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head, Link } from '@inertiajs/react';
 import { Folder, Plus } from 'lucide-react';
-import { motion } from 'framer-motion';
 
 export default function Index({ projects }) {
     return (
@@ -38,28 +37,22 @@ export default function Index({ projects }) {
                     </div>
                 ) : (
                     <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-                        {projects.map((project, i) => (
-                            <motion.div
+                        {projects.map((project) => (
+                            <Link
                                 key={project.id}
-                                initial={{ opacity: 0, y: 10 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: i * 0.1 }}
+                                href={route('projects.show', project.id)}
+                                className="block surface border rounded-2xl p-6 shadow-sm transition-all hover:border-indigo-500 hover:shadow-md group"
                             >
-                                <Link
-                                    href={route('projects.show', project.id)}
-                                    className="block surface border rounded-2xl p-6 shadow-sm transition-all hover:border-indigo-500 hover:shadow-md group"
-                                >
-                                    <div className="flex items-center justify-between mb-3">
-                                        <div className="w-10 h-10 rounded-xl bg-indigo-100 dark:bg-indigo-900/40 flex items-center justify-center transition-colors group-hover:bg-indigo-600 group-hover:text-white text-indigo-600">
-                                            <Folder className="h-5 w-5" />
-                                        </div>
+                                <div className="flex items-center justify-between mb-3">
+                                    <div className="w-10 h-10 rounded-xl bg-indigo-100 dark:bg-indigo-900/40 flex items-center justify-center transition-colors group-hover:bg-indigo-600 group-hover:text-white text-indigo-600">
+                                        <Folder className="h-5 w-5" />
                                     </div>
-                                    <h3 className="font-display font-bold text-xl text-primary mb-1 group-hover:text-indigo-600 transition-colors">{project.name}</h3>
-                                    <p className="text-sm text-muted line-clamp-2">
-                                        {project.description || 'No description provided.'}
-                                    </p>
-                                </Link>
-                            </motion.div>
+                                </div>
+                                <h3 className="font-display font-bold text-xl text-primary mb-1 group-hover:text-indigo-600 transition-colors">{project.name}</h3>
+                                <p className="text-sm text-muted line-clamp-2">
+                                    {project.description || 'No description provided.'}
+                                </p>
+                            </Link>
                         ))}
                     </div>
                 )}

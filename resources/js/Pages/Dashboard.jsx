@@ -1,15 +1,14 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head, usePage, Link } from '@inertiajs/react';
 import { CheckCircle, Clock, ListTodo, ArrowRight, TrendingUp } from 'lucide-react';
-import { motion } from 'framer-motion';
 
 export default function Dashboard({ totalTasks = 0, completedTasks = 0, pendingTasks = 0 }) {
     const { auth } = usePage().props;
     
     const stats = [
-        { label: 'Total Tasks', value: totalTasks, icon: ListTodo, color: 'text-indigo-600', bg: 'bg-indigo-100 dark:bg-indigo-900/40', change: '+12%', changeColor: 'text-emerald-600 bg-emerald-100 dark:bg-emerald-900/30' },
-        { label: 'Completed', value: completedTasks, icon: CheckCircle, color: 'text-emerald-600', bg: 'bg-emerald-100 dark:bg-emerald-900/40', change: '+8.2%', changeColor: 'text-emerald-600 bg-emerald-100 dark:bg-emerald-900/30' },
-        { label: 'Pending', value: pendingTasks, icon: Clock, color: 'text-amber-600', bg: 'bg-amber-100 dark:bg-amber-900/40', change: '-3.1%', changeColor: 'text-amber-600 bg-amber-100 dark:bg-amber-900/30' },
+        { label: 'Total Tasks', value: totalTasks, icon: ListTodo, color: 'text-indigo-600', bg: 'bg-indigo-100 dark:bg-indigo-900/40' },
+        { label: 'Completed', value: completedTasks, icon: CheckCircle, color: 'text-emerald-600', bg: 'bg-emerald-100 dark:bg-emerald-900/40' },
+        { label: 'Pending', value: pendingTasks, icon: Clock, color: 'text-amber-600', bg: 'bg-amber-100 dark:bg-amber-900/40' },
     ];
 
     return (
@@ -41,11 +40,8 @@ export default function Dashboard({ totalTasks = 0, completedTasks = 0, pendingT
 
                 {/* STAT CARDS */}
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                    {stats.map((stat, i) => (
-                        <motion.div
-                            initial={{ opacity: 0, y: 10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: i * 0.1 }}
+                    {stats.map((stat) => (
+                        <div
                             key={stat.label}
                             className="stat-card surface border rounded-2xl p-5 shadow-sm"
                         >
@@ -56,7 +52,7 @@ export default function Dashboard({ totalTasks = 0, completedTasks = 0, pendingT
                             </div>
                             <p className="font-display font-bold text-3xl text-primary">{stat.value}</p>
                             <p className="text-xs text-muted mt-1">{stat.label}</p>
-                        </motion.div>
+                        </div>
                     ))}
                 </div>
 

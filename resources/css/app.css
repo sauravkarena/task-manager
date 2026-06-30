@@ -17,11 +17,6 @@
   * { font-family: var(--font-body); }
   h1, h2, h3, .font-display { font-family: var(--font-display); }
 
-  /* Smooth theme transitions */
-  *, *::before, *::after {
-    transition: background-color 0.25s ease, border-color 0.25s ease, color 0.15s ease, box-shadow 0.2s ease;
-  }
-
   /* Scrollbar styling */
   ::-webkit-scrollbar { width: 5px; height: 5px; }
   ::-webkit-scrollbar-track { background: transparent; }
@@ -66,6 +61,13 @@
   /* Card hover */
   .stat-card { transition: transform 0.2s ease, box-shadow 0.2s ease; }
   .stat-card:hover { transform: translateY(-2px); }
+
+  /* Toast slide-up animation */
+  @keyframes slide-up {
+    from { opacity: 0; transform: translateY(20px) scale(0.95); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  .animate-slide-up { animation: slide-up 0.3s ease-out; }
 
   /* Light mode styles (default) */
   body { @apply bg-[#f8fafc] text-[#0f172a]; }
