@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback, useMemo, memo } from 'react';
 import { Plus, Trash2, GripVertical, Calendar, Pencil, Search, Filter } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import InputError from '@/Components/InputError';
+import DatePicker from '@/Components/DatePicker';
 
 const COLUMNS = ['To Do', 'In Progress', 'Done'];
 const PRIORITIES = { 
@@ -81,11 +82,10 @@ const TaskCard = memo(function TaskCard({ task, draggingId, expanded, onToggleEx
                     </div>
                     <div>
                         <label className="block text-[10px] font-bold text-secondary uppercase tracking-wider mb-1">Due Date</label>
-                        <input 
-                            type="date" 
+                        <DatePicker 
                             value={editDueDate} 
-                            onChange={e => setEditDueDate(e.target.value)} 
-                            className="input-style w-full px-2.5 py-1.5 rounded-lg border text-xs" 
+                            onChange={setEditDueDate} 
+                            placeholder="Select due date"
                         />
                     </div>
                 </div>
@@ -380,7 +380,7 @@ export default function Show({ project }) {
                             </div>
                             <div className="col-span-3 md:col-span-1">
                                 <label className="block text-xs font-semibold text-secondary uppercase tracking-wide mb-2">Due Date</label>
-                                <input type="date" value={data.due_date} onChange={e => setData('due_date', e.target.value)} className="input-style w-full px-3.5 py-2.5 rounded-xl border text-sm transition-all" />
+                                <DatePicker value={data.due_date} onChange={val => setData('due_date', val)} placeholder="Select due date" />
                             </div>
                             <div className="col-span-3">
                                 <label className="block text-xs font-semibold text-secondary uppercase tracking-wide mb-2">Description</label>
