@@ -1,8 +1,22 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
-import { Head, Link } from '@inertiajs/react';
-import { Folder, Plus } from 'lucide-react';
+import { Head, Link, router } from '@inertiajs/react';
+import { Folder, Plus, Pencil, Trash2 } from 'lucide-react';
 
 export default function Index({ projects }) {
+    const deleteProject = (id, e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        if (confirm('Are you sure you want to delete this project and all its tasks?')) {
+            router.delete(route('projects.destroy', id));
+        }
+    };
+
+    const editProject = (id, e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        router.get(route('projects.edit', id));
+    };
+
     return (
         <AuthenticatedLayout
             header={
@@ -41,11 +55,27 @@ export default function Index({ projects }) {
                             <Link
                                 key={project.id}
                                 href={route('projects.show', project.id)}
-                                className="block surface border rounded-2xl p-6 shadow-sm transition-all hover:border-indigo-500 hover:shadow-md group"
+                                className="block surface border rounded-2xl p-6 shadow-sm transition-all hover:border-indigo-500 hover:shadow-md group relative"
                             >
                                 <div className="flex items-center justify-between mb-3">
                                     <div className="w-10 h-10 rounded-xl bg-indigo-100 dark:bg-indigo-900/40 flex items-center justify-center transition-colors group-hover:bg-indigo-600 group-hover:text-white text-indigo-600">
                                         <Folder className="h-5 w-5" />
+                                    </div>
+                                    <div className="flex items-center gap-1.5 relative z-10">
+                                        <button
+                                            onClick={(e) => editProject(project.id, e)}
+                                            className="p-1.5 rounded-lg border border-transparent hover:border-slate-200 dark:hover:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 text-secondary hover:text-indigo-600 transition-all"
+                                            title="Edit project"
+                                        >
+                                            <Pencil className="h-4 w-4" />
+                                        </button>
+                                        <button
+                                            onClick={(e) => deleteProject(project.id, e)}
+                                            className="p-1.5 rounded-lg border border-transparent hover:border-red-200 dark:hover:border-red-950/20 hover:bg-red-50 text-secondary hover:text-red-500 transition-all"
+                                            title="Delete project"
+                                        >
+                                            <Trash2 className="h-4 w-4" />
+                                        </button>
                                     </div>
                                 </div>
                                 <h3 className="font-display font-bold text-xl text-primary mb-1 group-hover:text-indigo-600 transition-colors">{project.name}</h3>
