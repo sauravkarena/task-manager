@@ -28,7 +28,6 @@ export default function UpdateProfileInformation({
                     className={`input-style w-full px-3.5 py-2.5 rounded-xl border text-sm ${errors.name ? '!border-red-500 focus:!border-red-500' : ''}`}
                     value={data.name}
                     onChange={(e) => setData('name', e.target.value)}
-                    required
                     autoComplete="name"
                 />
                 <InputError className="mt-2" message={errors.name} />
@@ -42,7 +41,6 @@ export default function UpdateProfileInformation({
                     className={`input-style w-full px-3.5 py-2.5 rounded-xl border text-sm ${errors.email ? '!border-red-500 focus:!border-red-500' : ''}`}
                     value={data.email}
                     onChange={(e) => setData('email', e.target.value)}
-                    required
                     autoComplete="username"
                 />
                 <InputError className="mt-2" message={errors.email} />

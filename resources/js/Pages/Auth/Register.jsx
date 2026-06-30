@@ -41,7 +41,6 @@ export default function Register() {
                             autoFocus
                             placeholder="John Doe"
                             onChange={(e) => setData('name', e.target.value)}
-                            required
                         />
                     </div>
                     <InputError message={errors.name} className="mt-2" />
@@ -60,7 +59,6 @@ export default function Register() {
                             autoComplete="username"
                             placeholder="you@example.com"
                             onChange={(e) => setData('email', e.target.value)}
-                            required
                         />
                     </div>
                     <InputError message={errors.email} className="mt-2" />
@@ -79,7 +77,6 @@ export default function Register() {
                             autoComplete="new-password"
                             placeholder="••••••••"
                             onChange={(e) => setData('password', e.target.value)}
-                            required
                         />
                     </div>
                     <InputError message={errors.password} className="mt-2" />
@@ -98,7 +95,6 @@ export default function Register() {
                             autoComplete="new-password"
                             placeholder="••••••••"
                             onChange={(e) => setData('password_confirmation', e.target.value)}
-                            required
                         />
                     </div>
                     <InputError message={errors.password_confirmation} className="mt-2" />
